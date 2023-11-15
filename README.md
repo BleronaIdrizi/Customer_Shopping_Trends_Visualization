@@ -7,7 +7,7 @@ Kjo baza e të dhënave është një përmbledhje ideale për fillestarët, duke
 1. Se pari bëni instalimin e python-it në pajisjen e juaj.
 2. Pastaj duhet të instalohen libraritë sipas kësaj komande ne direktoriumin ku është i vendosur projekti:
 ```python
-pip3 install -r packages.txt
+pip3 install -r requirements.txt
 ```
 
 
