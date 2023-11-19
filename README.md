@@ -37,3 +37,74 @@ pip3 install -r requirements.txt
 - Mirepo me përdorimin e metodës Z-Score i kemi larguar Outliers. Rezultati pas largimit të Outliers:
 
 ![Outliers Before](images/outliers_after.png)
+#### 1.4 Menaxhimi i Zhurmës: 
+- Në dataset-in tonë janë analizuar dy lloje të kolonave për zhurmë. Kolona e parë është: Purchase Amount. Rezultati i kësaj kolone me zhurmë duke përdorur boxplot është: 
+
+![Purchase Noisy Before](images/purchase_noisy_before.png)
+- Mirepo me përdorimin e metodës IQR(Interquartile Range) e kemi larguar zhurmën në këtë kolonë. Rezultati pas largimit të zhurmës:
+
+![Purchase Noisy Before](images/purchase_noisy_after.png)
+
+- Kolona e dytë është: Category. Rezultati i kësaj kolone me zhurmë duke përdorur boxplot është: 
+
+![Purchase Noisy Before](images/category_noisy_before.png)
+
+- Me reduktimin e zhurmës në këtë kolonë arrihet ky rezultat:
+
+![Purchase Noisy Before](images/category_noisy_after.png)
+
+### 2. Priprocesimi i të dhënave: 
+#### 2.1 Reduktimi i dimensionalitetit: 
+- Në dataset-in tonë janë përdorur dy kolona për të treguar nëse artikulli ka pasur zbritje dhe nese është përdorur kodi i zbritjës. Përdorimi i njerës afekton tjetrën, kështu që e kemi shtuar një kolonë të re që i përfaqson këto dy kolona, dhe rezultati i dataset-it duket kështu:
+
+![Dimensinality Reduction](images/dimensinality_reduction.png)
+
+#### 2.2 Mostrimi i të dhënave: 
+- Ne kemi paraqitur gjininë më të shpeshtë për shitje gjatë stinëve të ndryshme për ta paraqitur mostrimin. Rezultati para mostrimit:
+
+![Sampling Before](images/sampling_before.png)
+
+- Ndërsa rezultati pas mostrimit, duke i marrur vetëm 500 rreshta duket kështu:
+
+![Sampling After](images/sampling_after.png)
+
+#### 2.3 Agregimi i të dhënave: 
+- Një nga shembujt se si e kemi përdorur agregimin është shuma totale e blerjeve sipas kategorisë:
+
+![Aggregation](images/aggregation.png)
+
+#### 2.4 Zgjedhja e nën bashkësisë së vetive: 
+- Rezultati i arritur në shembullin se si e kemi përdorur zgjedhjen e nën bashkësisë së vetive duket kështu:
+
+![Exmplae of use](images/example_of_use.png)
+
+#### 2.5 Krijimi i vetive: 
+- Rezultati i arritur në shembullin se si e kemi përdorur krijimin e vetive duket kështu:
+
+![Exmplae of use 1](images/example_of_use_1.png)
+
+#### 2.6 Binarizimi: 
+- Rezultati i arritur në shembullin se si e kemi përdorur binarizimin duket kështu:
+
+![Binnings](images/binnings.png)
+
+#### 2.6 Transformimi: 
+- Rezultati i arritur në shembullin se si e kemi përdorur transformimin duket kështu:
+
+![Tranfromation](images/tranfromation.png)
+
+### 3. Krijimi i datasetit të procesuar: 
+- Pasi qe e kemi përfunduar priprocesimin e të dhënave, rezultati përfundimtar ruhet tek folderi files me emrin "Preprocessed_Shopping_Trends_Dataset": 
+
+![Tranfromation](images/preprocessed_df.png)
+
+#### 3.1 Kompresimi: 
+- Pasi qe e kemi përfunduar priprocesimin e të dhënave e kemi bërë edhe kompresimin e tyre: 
+
+![Compresion](images/compresion.png)
+
+
+## Kontributi
+Blerona Idrizi
+
+Vlora Gjoka
