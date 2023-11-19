@@ -1,5 +1,5 @@
-# Trendet e blerjeve të konsumatorëve
-Kjo baza e të dhënave është një përmbledhje ideale për fillestarët, duke ofruar njohuri mbi sjelljen e konsumatorëve me të dhënat mbi demografinë e klientëve, modelet e blerjeve dhe preferencat, të dobishme për bizneset në përshtatjen e strategjive dhe përmirësimin e përvojës së klientit.
+# Customer Shopping Trends Dataset
+Ky projekt në lendën: *Përgatitja dhe vizualizimi i të dhënave* analizon "Customer Shopping Trends Dataset", duke ofruar një pasqyrë të thellë mbi sjelljet dhe preferencat e blerjeve të konsumatorëve. Duke përdorur teknika të avancuara të parapërgatitjes dhe analizës së të dhënave, ne synojmë të paraqesim disa ide se si mund ti ndihmojmë bizneset të përshtaten në nevojat e klientëve të tyre. Projektim, ekzekutimi dhe analiza e të dhënave janë bërë me qëllim të përmirësimit të strategjive të marketingut dhe ofertave të bizneseve, duke kontribuar drejt një përvoje më të personalizuar për konsumatorin.
 
 **[Customer Shopping Trends Dataset](https://www.kaggle.com/datasets/iamsouravbanerjee/customer-shopping-trends-dataset/data)** from **[Kaggle](https://www.kaggle.com)**.
 
@@ -11,31 +11,29 @@ Kjo baza e të dhënave është një përmbledhje ideale për fillestarët, duke
 pip3 install -r requirements.txt
 ```
 
-## Karakteristikat kryesore
-- **Kualiteti i të dhënave**
-- **Menaxhimi i zhurmës**: Teknikat për menaxhimin dhe pastrimin e të dhënave zhurmuese në grupin e të dhënave.
-- **Agregimi i të dhënave**: Agregimi i të dhënave për të nxjerrë njohuri të dobishme.
-- **Mostrimi  i të dhënave**: Analiza e asaj se cila gjini bën më shumë blerje në çdo stinë.
-- **Kompresimi i të dhënave**: Teknikat për kompresimin e grupit të të dhënave për ruajtje efikase.
-- **Diskretizimi**: Metodat e Binning për thjeshtimin e të dhënave për analizë më të mirë.
-
-
-## Hapat e përpunimit të të dhënave
-1. *Analiza e strukturës së të dhënave*: Duke përdorur df.head() për të parë të dhënat fillestare.
-2. *Kuptimi i Llojeve të të dhënave*: Duke ekzekutuar df.info() për të kuptuar llojet e të dhënave.
-3. *Kontrollimi i Vlerave Null*: Duke përdorur df.isnull().sum() për të kontrolluar për vlera null.
-4. *Menaxhimi i të dhënave duplikate*: Identifikimi dhe heqja e të dhënave të përsëritura.
-5. *Zbulimi dhe menaxhimi i Outliers*: Duke përdorur metoda statistikore për të gjetur dhe menaxhuar outliers.
-6. *Shtimi dhe pastrimi i Zhurmës*: Duke futur dhe më pas pastruar zhurmën në grupin e të dhënave për testimin e qëndrueshmërisë.
-7. *Binning i të dhënave*: Duke aplikuar metoda të Binning për të kategorizuar të dhënat e moshës.
-
 ## Teknikat e Vizualizimit
 - Boxplots për analizën e outliers dhe zhurmës.
 - Pie Charts për të paraqitur shpërndarjen gjinore nëpër stinë.
 - Grafikë me shtylla për të paraqitur shumat totale të blerjeve sipas kategorisë.
 
+## Disa rezultate tona në priprocesimin e të dhënave
+### 1. *Kualiteti i të dhënave*: 
+#### 1.1 *Menaxhimi vlerave *null**: 
+- Në dataset-in tonë janë gjetur disa lloje të ndryshme të kolonave me vlera *null*.
 
-## Kontributi
-Blerona Idrizi
+![Null Values](images/null_values_before.png)
+- Vlerat *null* të kolonës "Age" i kemi trajtuar duke zevëndësuar me moshën mesatare, ndërsa vlerat null të kolonave tjera i kemi injoruar.
 
-Vlora Gjoka
+#### 1.2 *Menaxhimi i duplikateve*: 
+- Në dataset-in tonë i janë gjetur disa duplikate:
+
+![Duplicates](images/duplicates.png)
+- Pas ekzektuimi të komandës për gjetjen e rreshtave duplikat e kemi ekzekutuar komandën për largimin e duplikateve.
+
+#### 1.3 *Menaxhimi i Outliers*: 
+- Në dataset-in tonë kolona Age është gjetur si Outlier dhe me përdorimin e paketës seaborn e kemi shfaqur datasetin se si duket me Ouliers:
+
+![Outliers After](images/outliers_before.png)
+- Mirepo me përdorimin e metodës Z-Score i kemi larguar Outliers. Rezultati pas largimit të Outliers:
+
+![Outliers Before](images/outliers_after.png)
