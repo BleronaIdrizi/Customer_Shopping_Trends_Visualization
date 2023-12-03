@@ -16,6 +16,14 @@ pip3 install -r requirements.txt
 - Pie Charts për të paraqitur shpërndarjen gjinore nëpër stinë.
 - Grafikë me shtylla për të paraqitur shumat totale të blerjeve sipas kategorisë.
 
+## Tipet e atributeve
+1. Kategoriale(Kualitative)
+    - Nominale: Gender, Item Purchased, Category, Location, Color, Season, Subscription Status, Shipping Type, Discout Applied, Promo Code Used, Payment Method.
+    - Ordinale: Review Rating, Size, Frequency of Purchases.
+2. Numerike(Kuantitative)
+    - Interval: Age, Previous Purchases.
+    - Ratio: Customer ID, Purchase Amount (USD).
+
 ## Disa rezultate tona në priprocesimin e të dhënave
 ### 1. *Kualiteti i të dhënave*: 
 #### 1.1 *Menaxhimi vlerave *null**: 
