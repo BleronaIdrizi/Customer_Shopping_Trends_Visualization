@@ -3953,3 +3953,15 @@ Customer ID,Age,Gender,Item Purchased,Category,Purchase Amount (USD),Location,Si
 3900,700,Female,Handbag,Accessories,81,California,M,Light Purple,Spring,3.1,No,Store Pickup,No,No,33,Venmo,Quarterly
 3900,700,Female,Handbag,Accessories,81,California,M,Light Purple,Spring,3.1,No,Store Pickup,No,No,33,Venmo,Quarterly
 3900,700,Female,Handbag,Accessories,81,California,M,Light Purple,Spring,3.1,No,Store Pickup,No,No,33,Venmo,Quarterly
+3873,41,Female,Jacket,Outerwear,94,New Hampshire,M,Green,Spring,-4.3,No,Standard,No,No,3,Cash,Monthly
+3874,42,Female,Sandals,Footwear,43,Louisiana,L,Silver,Summer,-4,No,Standard,No,No,22,Credit Card,Weekly
+3875,70,Female,Sweater,Clothing,54,Nevada,XL,Beige,Summer,-3.9,No,2-Day Shipping,No,No,33,Credit Card,Bi-Weekly
+3876,63,Female,Hat,Accessories,51,New Hampshire,M,Pink,Winter,-3.3,No,2-Day Shipping,No,No,21,Credit Card,Annually
+3877,60,Female,Shoes,Footwear,85,Wisconsin,S,Cyan,Fall,-2.6,No,2-Day Shipping,No,No,7,Cash,Annually
+3878,28,Female,Hoodie,Clothing,96,Nevada,M,Olive,Spring,-4.2,No,Next Day Air,No,No,46,Debit Card,Monthly
+3879,60,Female,Hat,Accessories,42,South Carolina,M,Pink,Summer,-3.4,No,2-Day Shipping,No,No,24,Credit Card,Annually
+3880,26,Female,Skirt,Clothing,63,Florida,L,Maroon,Winter,-4.1,No,Free Shipping,No,No,6,Debit Card,Quarterly
+3881,42,Female,Shirt,Clothing,20,Massachusetts,M,Red,Winter,-3.9,No,Free Shipping,No,No,40,PayPal,Monthly
+3882,56,Female,Scarf,Accessories,25,Georgia,L,Silver,Spring,-2.8,No,2-Day Shipping,No,No,17,Debit Card,Weekly
+3883,35,Female,Pants,Clothing,95,North Dakota,L,Blue,Fall,-2.6,No,Free Shipping,No,No,24,Cash,Fortnightly
+3884,34,Female,Hat,Accessories,38,North Dakota,XL,Purple,Fall,4,No,Next Day Air,No,No,22,Cash,Fortnightly
