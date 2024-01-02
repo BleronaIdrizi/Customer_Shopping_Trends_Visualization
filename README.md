@@ -111,8 +111,255 @@ pip3 install -r requirements.txt
 
 ![Compresion](images/compresion.png)
 
+# FAZA 2
 
-## Kontributi
+## Outliers
+Ky seksion përmban hapat e ndërmarrë për identifikimin dhe trajtimin e outliers në setin e të dhënave. Analiza e outliers është e rëndësishme për të siguruar saktësinë dhe cilësinë e modeleve statistikore dhe të nxjerrjes së përfundimeve.
+
+### Shembulli i moshës
+
+Metoda që përdorim për të identifikuar outliers është e bazuar në analizë statistikore, duke përdorur vizualizimin e boxplot. Ky lloj grafiku na ndihmon të shohim vlerat që shfaqen jashtë intervalit të zakonshëm të të dhënave.
+
+```python
+import seaborn as sns
+import pandas as pd
+
+# Kemi një DataFrame të quajtur 'df' që përmban kolonën 'Age'.
+# Për të vizualizuar outliers në moshë, ekzekutojmë këtë kod:
+
+sns.boxplot(df['Age'], orient='h')
+
+# Kështu krijohet një boxplot horizontal që shfaq moshën.
+# Vlerat e identifikuara si outliers janë të shënuara me pika të veçanta
+# jashtë kutisë qendrore të grafikut.
+
+```
+### Analiza e Outliers me DBSCAN
+
+ DBSCAN është një algoritem klasifikimi bazuar në dendësi që ndihmon në identifikimin e grupeve (clusters) të dendura me pikat e jashtme si outliers.
+
+#### Procesi i përpunimit të të dhënave dhe aplikimi i DBSCAN
+
+Fillimisht, kemi konvertuar kolonat e nevojshme në vlera numerike dhe kemi selektuar kolonat për grupim. Pastaj kemi standardizuar karakteristikat për të përmirësuar performancën e DBSCAN.
+
+```python
+import seaborn as sns
+import pandas as pd
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import DBSCAN
+
+# Konverto vlerat në vlera numerike
+df['Age'] = pd.to_numeric(df['Age'], errors='coerce')
+df['Purchase Amount (USD)'] = pd.to_numeric(df['Purchase Amount (USD)'], errors='coerce')
+
+# Selektimi i kolonave për grupim
+X = df[['Age', 'Purchase Amount (USD)']]
+
+# Standardizimi i karakteristikave
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X.dropna())
+
+# Aplikimi i DBSCAN
+dbscan = DBSCAN(eps=0.5, min_samples=5)
+clusters = dbscan.fit_predict(X_scaled)
+```
+### Identifikimi i Outliers me KMeans Clustering
+
+KMeans është një algoritem i njohur i grumbullimit që ndan të dhënat në grupe bazuar në ngjashmërinë e tyre.
+
+#### Procesi i përpunimit të të dhënave dhe aplikimi i KMeans
+
+Ne fillim zgjodhëm kolonat e nevojshme dhe pastaj pastruam të dhënat për të hequr vlerat që mungojnë. Pas kësaj, ne inicializuam modelin KMeans me një numër të caktuar të qendrave të grupimeve dhe e trajnuam atë me të dhënat tona të pastruara.
+
+```python
+import pandas as pd
+from sklearn.cluster import KMeans
+from scipy.spatial.distance import cdist
+import numpy as np
+import plotly.express as px
+
+# Zgjedhja e kolonave të nevojshme nga DataFrame
+data_selected = df[['Age', 'Purchase Amount (USD)']]
+
+# Pastrimi i të dhënave dhe përdorimi i KMeans
+data_selected_clean = data_selected.dropna()
+kmeans = KMeans(n_clusters=3, n_init=10)
+kmeans.fit(data_selected_clean)
+
+# Llogaritja e distancës nga qendrat e grupimeve
+distanca = cdist(data_selected, kmeans.cluster_centers_, 'euclidean')
+distancia_minimale = np.min(distanca, axis=1)
+df['distanca_deri_te_qendra'] = distancia_minimale
+```
+### Identifikimi i Outliers me metodën Z-Score
+
+Në këtë pjesë, kemi përdorur metoden Z-Score për të gjetur dhe larguar outliers në të dhënat e moshës. Metoda Z-Score përdor mesataren dhe devijimin standard për të përcaktuar kufijtë e vlerave normale dhe atyre anomale.
+
+#### Gjetja e kufijve me Z-Score
+
+Për të përcaktuar kufijtë, ne kemi llogaritur mesataren dhe devijimin standard të moshës dhe kemi vendosur kufijtë si mesatare plus ose minus tre herë devijimi standard. Ja si duket kodi i përdorur:
+
+```python
+import pandas as pd
+
+# Llogaritja e kufijve të sipërm dhe të poshtëm
+upper_limit = df['Age'].mean() + 3*df['Age'].std()
+lower_limit = df['Age'].mean() - 3*df['Age'].std()
+print('Limiti i sipërm:', upper_limit)
+print('Limiti i poshtëm:', lower_limit)
+```
+#### Largimi i të dhënave që janë përcaktuar si Outliers
+
+Pas identifikimit të outliers me metoden Z-Score, ne kemi vijuar me largimin e tyre nga dataseti për të përmirësuar cilësinë e analizave të mëtejshme.
+
+```python
+# Largimi i outliers dhe krijimi i një dataseti të pastër
+new_df = df.loc[(df['Age'] <= upper_limit) & (df['Age'] >= lower_limit)]
+
+# Shfaqja e numrit të rreshtave përpara dhe pas largimit të outliers
+print('Para largimit të Outliers:', len(df))
+print('Pas largimit të Outliers:', len(new_df))
+print('Outliers:', len(df) - len(new_df))
+```
+### Shembulli i analizës së ngjyrave
+
+Në këtë pjesë të analizës, ne kemi shqyrtuar frekuencën e secilës ngjyrë në kolonën e ngjyrave të datasetit tonë. Ky hap është i rëndësishëm për të kuptuar shpërndarjen e të dhënave dhe për të identifikuar ndonjë tendencë ose anomali.
+
+#### Llogaritja dhe vizualizimi i frekuencës së ngjyrave
+
+Ne fillim llogaritëm frekuencën e secilës ngjyrë duke përdorur metoda `value_counts()` dhe më pas e vizualizuam këtë shpërndarje duke përdorur një barplot nga seaborn.
+
+```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Llogaritja e frekuencës së secilës ngjyrë
+color_counts = df['Color'].value_counts()
+
+# Vizualizimi i frekuencës së ngjyrave
+plt.figure(figsize=(10, 6))
+sns.barplot(x=color_counts.index, y=color_counts.values)
+plt.title("Frekuenca e ngjyrave")
+plt.xlabel("Color")
+plt.ylabel("Frequency")
+plt.xticks(rotation=45)
+plt.show()
+```
+### Largimi i Outliers nga kolona e ngjyrave
+
+Në këtë pjesë, ne kemi trajtuar outliers që janë identifikuar në kolonën e ngjyrave të datasetit tonë. Kemi krijuar një listë të ngjyrave të konsideruara si outliers dhe më pas kemi larguar të gjitha rreshtat ku ngjyra është pjesë e kësaj liste.
+
+#### Procesi i largimit të Outliers
+
+Kemi përdorur listën e ngjyrave outliers për të krijuar një DataFrame të ri pa këto outliers:
+
+```python
+# Krijimi i listës së ngjyrave outliers
+outlier_colors = potential_outliers.index.tolist()
+
+# Largimi i rreshtave ku 'Color' është në listën e ngjyrave outlier
+df = df[~df['Color'].isin(outlier_colors)]
+```
+
+## Noisy Data
+
+Pas trajtimit të outliers, një pjesë tjetër kritike e pastrimit të të dhënave është identifikimi dhe trajtimi i të dhënave me zhurmë. Në këtë seksion, kemi shtuar zhurmë të qëllimshme në kolonën numerike për të simuluar të dhënat me zhurmë dhe për të treguar metodat e pastrimit.
+
+### Shtimi i zhurmës në një kolonë numerike
+
+Për të simuluar të dhënat me zhurmë, kemi shtuar vlera të rastësishme nga një shpërndarje normale te vlerat e kolonës 'Purchase Amount (USD)'.
+
+```python
+import numpy as np
+import pandas as pd
+
+# Vendosja e seed për reproducueshmëri
+np.random.seed(42)
+
+# Shtimi i zhurmës
+kolona_zhurme = 'Purchase Amount (USD)'
+df[kolona_zhurme] = df[kolona_zhurme] + np.random.normal(0, 20, size=len(df))
+```
+### Vizualizimi i të dhënave me zhurmë
+
+Pas shtimit të zhurmës në të dhënat, është e rëndësishme të kryejmë vizualizime për të vlerësuar ndikimin e zhurmës në të dhënat. Këtu kemi përdorur një boxplot për të paraqitur shpërndarjen e vlerave në kolonën 'Purchase Amount (USD)' pas shtimit të zhurmës.
+
+#### Krijimi i Boxplot
+
+Kodi i mëposhtëm tregon si të dhënat e kolonës së përzgjedhur janë vizualizuar për të identifikuar ndryshimet e shkaktuara nga zhurma:
+
+```python
+import matplotlib.pyplot as plt
+
+# Vizualizimi i boxplot për kolonën me zhurmë
+plt.boxplot(df[kolona_zhurme])
+plt.title(f'Boxplot i {kolona_zhurme} (Para Pastrimit)')
+plt.show()
+```
+### Trajtimi i të dhënave me zhurmë duke përdorur metodën IQR
+
+Një metodë efektive për trajtimin e të dhënave me zhurmë është përdorimi i interquartile range (IQR), e cila ndihmon në identifikimin dhe heqjen e outliers që mund të konsiderohen si zhurmë.
+
+#### Heqja e Outliers me IQR
+
+Fillimisht, kemi llogaritur vlerat e parë dhe të tretë të quartilit (Q1 dhe Q3) dhe më pas kemi përcaktuar kufijtë për outliers si më poshtë:
+
+```python
+# Llogaritja e IQR dhe kufijve për outliers
+Q1 = df[kolona_zhurme].quantile(0.25)
+Q3 = df[kolona_zhurme].quantile(0.75)
+IQR = Q3 - Q1
+limiti_i_ulët = Q1 - 1.5 * IQR
+limiti_i_lartë = Q3 + 1.5 * IQR
+```
+### Shtimi i zhurmës dhe pastrimi në një kolonë string
+
+Në përpjekjen tonë për të menaxhuar të dhënat me zhurmë, kemi aplikuar një funksion që shton zhurmë në një kolonë string. Kjo metodë simulon të dhënat reale që mund të përmbajnë gabime ose vargje të rastësishme.
+
+#### Shtimi i zhurmës në kolonën "Category"
+
+Kemi përdorur një funksion të përcaktuar paraprakisht për të shtuar zhurmë në kolonën "Category". Kjo zhurmë mund të jetë në formën e kategorive të rastësishme që imitojnë të dhënat jo të sakta.
+
+```python
+# Funksioni për shtimin e zhurmës është thirrur këtu
+shto_zhurme_ne_kategori(df)
+```
+### Heqja e të dhënave me zhurmë nga kolona kategorike
+
+Në këtë seksion, ne trajtojmë të dhënat me zhurmë në kolonën kategorike 'Category'. Kemi aplikuar një metodë për të zëvendësuar të dhënat e zhurmshme me një vlerë të zbrazët dhe më pas kemi larguar rreshtat me këto vlera të zbrazëta.
+
+#### Zëvendësimi dhe largimi i të dhënave me zhurmë
+
+Për të larguar të dhënat me zhurmë, fillimisht zëvendësojmë çdo instancë të listës së vlerave të zhurmshme me vlera të zbrazëta, dhe më pas heqim rreshtat që përmbajnë këto vlera të zbrazëta nga DataFrame.
+
+```python
+# Zëvendësimi i të dhënave me zhurmë me vlera të zbrazëta
+df['Category'] = df['Category'].replace('|'.join(lista_e_kategorive_zhurme), '')
+
+# Largimi i rreshtave ku 'Category' është zbrazët
+df = df[df['Category'] != '']
+```
+### Analiza e Skewness në të dhënat
+
+Në këtë seksion, demonstruam si të analizojmë shpërndarjen e të dhënave që nuk janë simetrike, duke përdorur një shembull të të dhënave të shtrembëruara. Kjo shpërndarje është zakonisht karakteristike e të dhënave reale dhe mund të ndikojë në zbatimin e teknikave statistikore.
+
+#### Gjenerimi i të dhënave të shtrembëruara
+
+Për qëllime demonstrative, kemi gjeneruar një set të dhënash eksponenciale me një shtrembërim të caktuar:
+
+```python
+import numpy as np
+import seaborn as sns
+from scipy import stats
+import matplotlib.pyplot as plt
+
+np.random.seed(0)
+data = np.random.exponential(scale=2.0, size=1000)
+
+```
+
+
+# Kontributi
 Blerona Idrizi
 
 Vlora Gjoka
