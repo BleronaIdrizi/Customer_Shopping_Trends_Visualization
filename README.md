@@ -134,9 +134,11 @@ sns.boxplot(df['Age'], orient='h')
 # jashtë kutisë qendrore të grafikut.
 
 ```
-### Analiza e Outliers me DBSCAN
+### Analiza e Outliers
 
  DBSCAN është një algoritem klasifikimi bazuar në dendësi që ndihmon në identifikimin e grupeve (clusters) të dendura me pikat e jashtme si outliers.
+
+![statistics before](images/outliers_statistics_before.png)
 
 #### Procesi i përpunimit të të dhënave dhe aplikimi i DBSCAN
 
@@ -163,6 +165,8 @@ X_scaled = scaler.fit_transform(X.dropna())
 dbscan = DBSCAN(eps=0.5, min_samples=5)
 clusters = dbscan.fit_predict(X_scaled)
 ```
+![dbscan](images/outliers_dbscan.png)
+
 ### Identifikimi i Outliers me KMeans Clustering
 
 KMeans është një algoritem i njohur i grumbullimit që ndan të dhënat në grupe bazuar në ngjashmërinë e tyre.
@@ -191,6 +195,9 @@ distanca = cdist(data_selected, kmeans.cluster_centers_, 'euclidean')
 distancia_minimale = np.min(distanca, axis=1)
 df['distanca_deri_te_qendra'] = distancia_minimale
 ```
+
+![Kmean](images/outliers_kmean.png)
+
 ### Identifikimi i Outliers me metodën Z-Score
 
 Në këtë pjesë, kemi përdorur metoden Z-Score për të gjetur dhe larguar outliers në të dhënat e moshës. Metoda Z-Score përdor mesataren dhe devijimin standard për të përcaktuar kufijtë e vlerave normale dhe atyre anomale.
@@ -221,6 +228,9 @@ print('Para largimit të Outliers:', len(df))
 print('Pas largimit të Outliers:', len(new_df))
 print('Outliers:', len(df) - len(new_df))
 ```
+
+![statistics after](images/outliers_statistics_after.png)
+
 ### Shembulli i analizës së ngjyrave
 
 Në këtë pjesë të analizës, ne kemi shqyrtuar frekuencën e secilës ngjyrë në kolonën e ngjyrave të datasetit tonë. Ky hap është i rëndësishëm për të kuptuar shpërndarjen e të dhënave dhe për të identifikuar ndonjë tendencë ose anomali.
@@ -245,6 +255,8 @@ plt.ylabel("Frequency")
 plt.xticks(rotation=45)
 plt.show()
 ```
+![statistics color before](images/outliers_before_color.png)
+
 ### Largimi i Outliers nga kolona e ngjyrave
 
 Në këtë pjesë, ne kemi trajtuar outliers që janë identifikuar në kolonën e ngjyrave të datasetit tonë. Kemi krijuar një listë të ngjyrave të konsideruara si outliers dhe më pas kemi larguar të gjitha rreshtat ku ngjyra është pjesë e kësaj liste.
@@ -260,6 +272,8 @@ outlier_colors = potential_outliers.index.tolist()
 # Largimi i rreshtave ku 'Color' është në listën e ngjyrave outlier
 df = df[~df['Color'].isin(outlier_colors)]
 ```
+
+![statistics color after](images/outliers_after_color.png)
 
 ## Noisy Data
 
@@ -280,6 +294,9 @@ np.random.seed(42)
 kolona_zhurme = 'Purchase Amount (USD)'
 df[kolona_zhurme] = df[kolona_zhurme] + np.random.normal(0, 20, size=len(df))
 ```
+
+![noisy data ex one](images/noisy_data_ex_one_before.png)
+
 ### Vizualizimi i të dhënave me zhurmë
 
 Pas shtimit të zhurmës në të dhënat, është e rëndësishme të kryejmë vizualizime për të vlerësuar ndikimin e zhurmës në të dhënat. Këtu kemi përdorur një boxplot për të paraqitur shpërndarjen e vlerave në kolonën 'Purchase Amount (USD)' pas shtimit të zhurmës.
@@ -296,6 +313,8 @@ plt.boxplot(df[kolona_zhurme])
 plt.title(f'Boxplot i {kolona_zhurme} (Para Pastrimit)')
 plt.show()
 ```
+![noisy data ex one](images/noisy_data_ex_one_boxplot.png)
+
 ### Trajtimi i të dhënave me zhurmë duke përdorur metodën IQR
 
 Një metodë efektive për trajtimin e të dhënave me zhurmë është përdorimi i interquartile range (IQR), e cila ndihmon në identifikimin dhe heqjen e outliers që mund të konsiderohen si zhurmë.
@@ -312,6 +331,9 @@ IQR = Q3 - Q1
 limiti_i_ulët = Q1 - 1.5 * IQR
 limiti_i_lartë = Q3 + 1.5 * IQR
 ```
+
+![noisy data ex one](images/noisy_data_ex_one_after.png)
+
 ### Shtimi i zhurmës dhe pastrimi në një kolonë string
 
 Në përpjekjen tonë për të menaxhuar të dhënat me zhurmë, kemi aplikuar një funksion që shton zhurmë në një kolonë string. Kjo metodë simulon të dhënat reale që mund të përmbajnë gabime ose vargje të rastësishme.
@@ -324,6 +346,8 @@ Kemi përdorur një funksion të përcaktuar paraprakisht për të shtuar zhurm�
 # Funksioni për shtimin e zhurmës është thirrur këtu
 shto_zhurme_ne_kategori(df)
 ```
+![noisy data ex two](images/noisy_data_ex_two_before.png)
+
 ### Heqja e të dhënave me zhurmë nga kolona kategorike
 
 Në këtë seksion, ne trajtojmë të dhënat me zhurmë në kolonën kategorike 'Category'. Kemi aplikuar një metodë për të zëvendësuar të dhënat e zhurmshme me një vlerë të zbrazët dhe më pas kemi larguar rreshtat me këto vlera të zbrazëta.
@@ -339,11 +363,18 @@ df['Category'] = df['Category'].replace('|'.join(lista_e_kategorive_zhurme), '')
 # Largimi i rreshtave ku 'Category' është zbrazët
 df = df[df['Category'] != '']
 ```
+![noisy data ex two](images/noisy_data_ex_two_after.png)
+
+### Analiza e SMOTE Algoritmit
+
+Paraqitje e SMOTE Algoritmit:
+
+![smote analyze befroe](images/smote_analyze_before.png)
+![smote analyze befroe 3d](images/smote_analyze_3d_before.png)
+
 ### Analiza e Skewness në të dhënat
 
 Në këtë seksion, demonstruam si të analizojmë shpërndarjen e të dhënave që nuk janë simetrike, duke përdorur një shembull të të dhënave të shtrembëruara. Kjo shpërndarje është zakonisht karakteristike e të dhënave reale dhe mund të ndikojë në zbatimin e teknikave statistikore.
-
-#### Gjenerimi i të dhënave të shtrembëruara
 
 Për qëllime demonstrative, kemi gjeneruar një set të dhënash eksponenciale me një shtrembërim të caktuar:
 
@@ -357,6 +388,12 @@ np.random.seed(0)
 data = np.random.exponential(scale=2.0, size=1000)
 
 ```
+
+Para:
+![Skewness data before](images/skewness_before.png)
+
+Pas:
+![Skewness data before](images/skewness_after.png)
 
 
 # Kontributi
