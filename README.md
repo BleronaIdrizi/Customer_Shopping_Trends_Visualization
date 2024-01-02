@@ -395,7 +395,7 @@ Para:
 Pas:
 ![Skewness data before](images/skewness_after.png)
 
-# Saktësia e Modelit
+# Saktësia e modelit
 
 Për të balancuar të dhënat në një problem të klasifikimit ku ekziston një mospërputhje mes klasave, është përdorur teknika e Synthetic Minority Over-sampling Technique (SMOTE). Kjo teknikë lejon krijimin e mostrave sintetike për klasën minoritare. Ky qasja përmirëson saktësinë e modelit duke siguruar që modeli trajnohet në një mënyrë më të balancuar dhe më të drejtë për të gjitha klasat.
 
@@ -418,6 +418,7 @@ print("Accuracy:", accuracy_score(y_test, predictions))
 print("\nClassification Report:\n", classification_report(y_test, predictions))
 ```
 
+![Acurrency](images/acurrency.png)
 
 
 # Kontributi
