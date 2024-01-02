@@ -38,29 +38,6 @@ pip3 install -r requirements.txt
 ![Duplicates](images/duplicates.png)
 - Pas ekzektuimi të komandës për gjetjen e rreshtave duplikat e kemi ekzekutuar komandën për largimin e duplikateve.
 
-#### 1.3 *Menaxhimi i Outliers*: 
-- Në dataset-in tonë kolona Age është gjetur si Outlier dhe me përdorimin e paketës seaborn e kemi shfaqur datasetin se si duket me Ouliers:
-
-![Outliers After](images/outliers_before.png)
-- Mirepo me përdorimin e metodës Z-Score i kemi larguar Outliers. Rezultati pas largimit të Outliers:
-
-![Outliers Before](images/outliers_after.png)
-#### 1.4 Menaxhimi i Zhurmës: 
-- Në dataset-in tonë janë analizuar dy lloje të kolonave për zhurmë. Kolona e parë është: Purchase Amount. Rezultati i kësaj kolone me zhurmë duke përdorur boxplot është: 
-
-![Purchase Noisy Before](images/purchase_noisy_before.png)
-- Mirepo me përdorimin e metodës IQR(Interquartile Range) e kemi larguar zhurmën në këtë kolonë. Rezultati pas largimit të zhurmës:
-
-![Purchase Noisy Before](images/purchase_noisy_after.png)
-
-- Kolona e dytë është: Category. Rezultati i kësaj kolone me zhurmë duke përdorur boxplot është: 
-
-![Purchase Noisy Before](images/category_noisy_before.png)
-
-- Me reduktimin e zhurmës në këtë kolonë arrihet ky rezultat:
-
-![Purchase Noisy Before](images/category_noisy_after.png)
-
 ### 2. Priprocesimi i të dhënave: 
 #### 2.1 Reduktimi i dimensionalitetit: 
 - Në dataset-in tonë janë përdorur dy kolona për të treguar nëse artikulli ka pasur zbritje dhe nese është përdorur kodi i zbritjës. Përdorimi i njerës afekton tjetrën, kështu që e kemi shtuar një kolonë të re që i përfaqson këto dy kolona, dhe rezultati i dataset-it duket kështu:
@@ -371,6 +348,14 @@ Paraqitje e SMOTE Algoritmit:
 
 ![smote analyze befroe](images/smote_analyze_before.png)
 ![smote analyze befroe 3d](images/smote_analyze_3d_before.png)
+
+Paraqitje e datasetit me KMeans algoritmin
+
+Para:
+![kmeans before](images/kmeans_before.png)
+
+Pas:
+![kmeans after](images/kmeans_after.png)
 
 ### Analiza e Skewness në të dhënat
 
