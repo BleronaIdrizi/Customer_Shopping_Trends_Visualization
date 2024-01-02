@@ -395,6 +395,30 @@ Para:
 Pas:
 ![Skewness data before](images/skewness_after.png)
 
+# Saktësia e Modelit
+
+Për të balancuar të dhënat në një problem të klasifikimit ku ekziston një mospërputhje mes klasave, është përdorur teknika e Synthetic Minority Over-sampling Technique (SMOTE). Kjo teknikë lejon krijimin e mostrave sintetike për klasën minoritare. Ky qasja përmirëson saktësinë e modelit duke siguruar që modeli trajnohet në një mënyrë më të balancuar dhe më të drejtë për të gjitha klasat.
+
+
+```python
+# Pjesa ku ndajmë të dhënat në trajnuese dhe testuese
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Zbatimi i SMOTE
+smote = SMOTE(random_state=42)
+X_resampled, y_resampled = smote.fit_resample(X_train_scaled, y_train)
+
+# Trajnimi i modelit
+model = RandomForestClassifier(random_state=42)
+model.fit(X_resampled, y_resampled)
+
+# Parashikimi dhe vlerësimi i modelit
+predictions = model.predict(X_test_scaled)
+print("Accuracy:", accuracy_score(y_test, predictions))
+print("\nClassification Report:\n", classification_report(y_test, predictions))
+```
+
+
 
 # Kontributi
 Blerona Idrizi
