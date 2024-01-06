@@ -452,6 +452,7 @@ plt.xlabel('Numri i blerjeve të mëparshme')
 plt.ylabel('Shuma e blerjes (USD)')
 plt.show()
 ```
+![vizualizimi i të dhënave shumëdimensionale](images/vizuailizimi_shume_dimensional.png)
 
 #### 3. Heatmap për marrëdhënien midis vlerësimit të rishikimit dhe mosha
 Ky heatmap tregon ndërvarësinë midis grupit të moshës së klientit dhe vlerësimit të tyre të rishikimit. Çdo qeli përfaqëson frekuencën e kombinimeve specifike të moshës dhe vlerësimit të rishikimit.
