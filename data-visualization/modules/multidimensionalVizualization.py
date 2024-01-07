@@ -28,7 +28,7 @@ def create_heatmap(df, col1, col2):
         crosstab = pd.crosstab(df[col1], df[col2])
         fig = px.imshow(crosstab, text_auto=True, aspect='auto', 
                         labels=dict(x=col2, y=col1, color='Count'), 
-                        title=f'Harta e Nxehtësisë për {col1} vs {col2}')
+                        title=f'Heatmap për {col1} vs {col2}')
         return fig
     else:
         st.warning("Ju lutem zgjidhni dy kolona të ndryshme për Heatmap.")
@@ -37,7 +37,7 @@ def create_heatmap(df, col1, col2):
 # Ky është funksioni kryesor i aplikacionit Streamlit
 def multidimensionalVizualizationPage(df):
     st.title('Vizualizimi i të dhënave shumëdimensionale')
-    
+
     # Zgjedhje të përdoruesit për vizualizimin
     x_axis = st.selectbox('Zgjidh boshtin X', options=df.columns)
     y_axis = st.selectbox('Zgjidh boshtin Y', options=df.columns)

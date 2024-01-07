@@ -416,7 +416,50 @@ Për të përdorur me me efikasitet vizualizimin e të dhënave në këtë proje
 
 
 
+## Vizualizimi i të dhënave shumë dimensionale
 
+Te vizualizimi shumë dimensional përdorim teknika të ndryshme për të paraqitur të dhëna me më shumë se dy dimensione. Aplikacioni ynë në Streamlit përfshin:
+
+### Karakteristikat
+
+Aplikacioni ofron opsionet e mëposhtme të vizualizimit:
+
+- **catter Plot**
+- **Bar Chart**
+- **Line Chart**
+- **3D Scatter Plot**
+- **Heatmap**
+
+## Përdorimi
+
+Për të përdorur aplikacionin, përdoruesit duhet të zgjedhin llojin e grafikut dhe pastaj të zgjedhin kolonat specifike për boshtet X, Y (dhe Z nëse është një grafik 3D) dhe dimensionin e ngjyrës (nëse është i nevojshëm).
+
+```python
+# Pjesa e kodit ku përdoruesit zgjedhin opsionet e vizualizimit
+x_axis = st.selectbox('Zgjidh boshtin X', options=df.columns)
+y_axis = st.selectbox('Zgjidh boshtin Y', options=df.columns)
+z_axis = st.selectbox('Zgjidh boshtin Z për grafikun 3D', options=['None'] + list(df.columns))
+color_dimension = st.selectbox('Zgjidh dimensionin e ngjyrës', options=['None'] + list(df.columns))
+plot_type = st.selectbox('Zgjidh llojin e grafikut', ['Scatter Plot', 'Bar Chart', 'Line Chart', '3D Scatter Plot'])
+```
+
+## Shembuj të përdorimit
+
+### Shembulli 1: Vizualizimi i shumës së blerjeve sipas kategorisë dhe gjinisë
+- **Përshkrimi:** Përdorni një 'Bar Chart' me 'Category' si boshtin X, 'Purchase Amount (USD)' si boshtin Y dhe 'Gender' si dimensionin e ngjyrës për të analizuar ndikimin e gjinisë në shumën e blerjeve në kategori të ndryshme.
+
+Rezultati me perdorimin e nje 'Bar Chart'
+![Bar Chart](images/barChart_plot_multidimensional.png)
+
+Nese duam të analizojmë marrëdhënien midis tre dimensioneve të të dhënave: moshës së klientit (Age), shumës së blerjes (Purchase Amount (USD)), dhe vlerësimit të rishikimeve (Review Rating) mundëmi të perdorim '3D Scatter Plot' për vizualizim me të mire. Kjo lloj analize mund të na ndihmojë të kuptojmë nëse ka ndonjë lidhje midis moshës së klientëve, shumës që ata shpenzojnë dhe si ata vlerësojnë produktet.
+
+![3D](images/3D_shembull.png)
+
+### Shembulli 2: Analiza e blerjeve sipas vendndodhjes dhe stinës
+- **Përshkrimi:** 
+Përdorni një 'Heatmap' ku 'Category' dhe 'Shipping Type' janë kolonat e zgjedhura për të zbuluar tendencat e blerjeve në lidhje me preferencat e transportit për çdo kategori të artikujve. Ky lloj vizualizimi do të ndihmojë në zbulimin e marrëdhënieve midis kategorive të ndryshme të produkteve dhe zgjedhjeve të klientëve për transport. 
+
+![Shembull](images/category_vs_ShippingType.png)
 
 
 
