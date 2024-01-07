@@ -405,7 +405,15 @@ print("Accuracy:", accuracy_score(y_test, predictions))
 ![Acurrency](images/acurrency.png)
 
 # FAZA 3
-Në këtë fazë përmes qasjeve të ndryshme, kemi arritur të kryejmë vizualizimin e të dhënave sipas tipeve të tyre, duke përfshirë një spektër të gjerë të informacionit. Vizualizimi statik dhe interaktiv ka pasqyruar në mënyrë efektive detaje të rëndësishme të të dhënave, duke ofruar një perspektivë të plotë. Po ashtu, kemi eksploruar dhe implementuar teknika të sofistikuara për vizualizimin e të dhënave shumë dimensionale, duke rritur thellësinë e analizës dhe kuptimit të informacionit. Përmes tabs që i kemi shtuar ne mund të shikojmë vizualizimet sipas kërkesave.
+Në këtë fazë përmes qasjeve të ndryshme, kemi arritur të kryejmë vizualizimin e të dhënave sipas tipeve të tyre, duke përfshirë një spektër të gjerë të informacionit. Vizualizimi statik dhe interaktiv ka pasqyruar në mënyrë efektive detaje të rëndësishme të të dhënave, duke ofruar një perspektivë të plotë. Po ashtu, kemi eksploruar dhe implementuar teknika të sofistikuara për vizualizimin e të dhënave shumë dimensionale, duke rritur thellësinë e analizës dhe kuptimit të informacionit. Startimi i projektit bëhet duke i instaluar paketat ne requirements dhe pastaj duhet të bëhet ekzekutimi i komandave:
+
+
+```python
+cd data-visualization/
+streamlit run app.py
+```
+
+Përmes tabs që i kemi shtuar ne mund të shikojmë vizualizimet sipas kërkesave.
 
 ![Tabs](images/tabs.png)
 
