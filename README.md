@@ -400,11 +400,11 @@ model.fit(X_resampled, y_resampled)
 # Parashikimi dhe vlerësimi i modelit
 predictions = model.predict(X_test_scaled)
 print("Accuracy:", accuracy_score(y_test, predictions))
-print("\nClassification Report:\n", classification_report(y_test, predictions))
 ```
 
 ![Acurrency](images/acurrency.png)
 
+# Faza 3
 
 # Kontributi
 Blerona Idrizi

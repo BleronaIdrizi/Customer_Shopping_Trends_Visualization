@@ -24,7 +24,7 @@ custom_css = """
 # Inject custom CSS with markdown
 st.markdown(custom_css, unsafe_allow_html=True)
 
-tabForDataTypeViz_, tabStaticInteractivViz_, tabForMultiDimensinalViz_, tabForAbout = st.tabs(["Tipet e të dhënave", "Static & Interactiv", "Multi-dimensional", "About"])
+tabForDataTypeViz_, tabStaticInteractivViz_, tabForMultiDimensinalViz_, tabForAbout = st.tabs(["Vizualizimi sipas tipeve të dhënave", "Vizualizimi statik dhe interaktiv", "Vizualizimi i të dhënave shumë dimensionale", "About"])
 
 with tabForDataTypeViz_:
     dataTypeVizualizationPage(dataset)
