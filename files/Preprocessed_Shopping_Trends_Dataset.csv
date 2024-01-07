@@ -3918,7 +3918,6 @@ Age,Gender,Item Purchased,Category,Purchase Amount (USD),Location,Size,Color,Sea
 28,Female,Hoodie,Clothing,133.11006629588525,Nevada,M,Olive,Spring,4.2,No,Next Day Air,46,Debit Card,No
 60,Female,Hat,Accessories,46.48469489070584,South Carolina,M,Pink,Summer,3.4,No,2-Day Shipping,24,Credit Card,No
 26,Female,Skirt,Clothing,56.07146987986201,Florida,L,Maroon,Winter,4.1,No,Free Shipping,6,Debit Card,No
-42,Female,Shirt,Clothing,-12.23134718205656,Massachusetts,M,Red,Winter,3.9,No,Free Shipping,40,PayPal,No
 56,Female,Scarf,Accessories,19.746809593676645,Georgia,L,Silver,Spring,2.8,No,2-Day Shipping,17,Debit Card,No
 35,Female,Pants,Clothing,88.27226109177728,North Dakota,L,Blue,Fall,2.6,No,Free Shipping,24,Cash,No
 34,Female,Hat,Accessories,57.206095925629405,North Dakota,XL,Purple,Fall,4.0,No,Next Day Air,22,Cash,No

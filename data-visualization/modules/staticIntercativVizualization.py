@@ -13,7 +13,7 @@ def staticIntercativVizualizationPage(df):
     st.header("Vizualizimi statik dhe interaktiv")
 
     # Create two columns for filters and visualizations
-    col1, col2 = st.columns([1, 2])
+    col1, col2 = st.columns([1, 3])
 
     # Initialize selected as None
     selected = None
@@ -25,31 +25,23 @@ def staticIntercativVizualizationPage(df):
             st.session_state['selected_filter'] = None
 
         # Define the filter selection
-        filter_option = st.selectbox("Zgjidhni një filter:", ["", "Mosha", "Kategoria", "Mënyra e pagesës"])
+        filter_option = st.selectbox("Zgjidhni një filter:", df.columns)
 
-        if filter_option == "Mosha":
-            selected = st.selectbox("Zgjidh moshën:", options=[""] + sorted(list(df['Age'].unique())))
-        elif filter_option == "Kategoria":
-            selected = st.selectbox("Zgjidh kategorinë:", options=[""] + sorted(list(df['Category'].unique())))
-        elif filter_option == "Mënyra e Pagesës":
-            selected = st.selectbox("Zgjidh mënyrën e pagesës:", options=[""] + sorted(list(df['Payment Method'].unique())))
+        if filter_option:
+            selected = st.selectbox("Zgjidh vlerën:", options=[""] + sorted(list(df[filter_option].unique())))
+
+        filter_second_option = st.selectbox("Zgjidh filterin për krahasim:", options=[""] + sorted(list(df.columns.unique())))
 
         # Update session state
         if selected:
-            st.session_state['selected_filter'] = (filter_option, selected)
+            st.session_state['selected_filter'] = (filter_option, selected, filter_second_option)
 
     # Check if a filter has been selected and plot the corresponding pie chart
     if st.session_state['selected_filter']:
-        filter_option, selected = st.session_state['selected_filter']
-
-        if filter_option == "Mosha":
-            filtered_data = df[df['Age'] == selected]['Season']
+        filter_option, selected, filter_second_option = st.session_state['selected_filter']
+        st.write(filter_option, selected, filter_second_option)
+        if filter_option:
+            filtered_data = df[df[filter_option] == selected][filter_second_option]
             plot_title = f"Distribuimi i sezoneve për moshën: {selected}"
-        elif filter_option == "Kategoria":
-            filtered_data = df[df['Category'] == selected]['Season']
-            plot_title = f"Distribuimi i sezoneve për kategorinë: {selected}"
-        elif filter_option == "Mënyra e Pagesës":
-            filtered_data = df[df['Payment Method'] == selected]['Season']
-            plot_title = f"Distribuimi i sezoneve për mënyrën e pagesës: {selected}"
 
-        plot_pie_chart(filtered_data, plot_title, col2)
+            plot_pie_chart(filtered_data, plot_title, col2)

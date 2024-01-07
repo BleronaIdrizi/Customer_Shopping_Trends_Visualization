@@ -70,18 +70,22 @@ def plot_bar_chart(df, column, title):
 
 def dataTypeVizualizationPage(df):
     st.header("Vizualizimi sipas tipeve të dhënave")
-    # Create two columns for buttons and visualizations
+    if 'selected_column' not in st.session_state:
+        st.session_state['selected_column'] = None
+
     col1, col2 = st.columns([1, 2])
 
     with col1:
+        st.subheader("Opsionet e Vizualizimit:")
         viz_option = st.radio("Zgjidhni stilin e vizualizimit:", ['Pie Charts', 'Columns', 'Horizontal Bar'])
 
         st.subheader("Kolonat:")
-        # Generate a button for each column in the dataframe
         for column in df.columns:
-            if st.button(f"Shfaq {column}"):
-                # Store the last clicked button in the session state
-                st.session_state.selected_column = column
+            # If the button for the column is clicked, or if it's the currently selected column, mark it
+            if st.button(f"Shfaq {column}", key=column):
+                st.session_state['selected_column'] = column
+            if st.session_state['selected_column'] == column:
+                st.write(f"Kolona e zgjedhur: {column}")
 
     with col2:
         if 'selected_column' in st.session_state:
