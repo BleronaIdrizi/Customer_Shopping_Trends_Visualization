@@ -495,6 +495,132 @@ Përdorni një 'Heatmap' ku 'Category' dhe 'Shipping Type' janë kolonat e zgjed
 
 
 
+# FAZA 3 
+
+Kjo fazë përmban përshkrimin dhe kodin e përdorur për vizualizimin e të dhënave shumëdimensionale nga një dataset i dhënë.
+
+## Procesi i Vizualizimit
+
+Vizualizimi përfshin disa hapa kryesorë:
+
+1. Leximi dhe pastrimi i të dhënave
+2. Analiza eksploruese
+3. Krijimi i vizualizimeve shumëdimensionale
+4. Krijimi i vizualizimeve interaktive
+
+
+
+### Vizualizimet shumë dimensionale
+
+#### Krijimi i Vizualizimeve
+
+Vizualizimet përfshijnë grafikë të shpërndarjes dhe heatmaps, të cilat paraqesin ndërveprime komplekse midis variablave të ndryshme.
+
+#### Libraritë e Përdorura
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
+
+#### 1. Grafik i shpërndarjes për mosha vs Shuma e blerjes
+Ky grafik i shpërndarjes tregon marrëdhënien midis moshës dhe shumës së blerjes me ngjyrat që diferencojnë gjininë. Përmes tij, shihet si ndryshon shpenzimi në varësi të moshës dhe gjinisë së klientit.
+
+```python
+sns.scatterplot(x='Age', y='Purchase Amount (USD)', hue='Gender', data=new_df)
+plt.title('Mosha vs Shuma e blerjes sipas gjinisë')
+plt.xlabel('Mosha')
+plt.ylabel('Shuma e blerjes (USD)')
+plt.show()
+```
+
+#### 2. Grafik i shpërndarjes - Numri i blerjeve të mëparshme vs Shuma e blerjes
+Ky grafik tregon ndikimin e numrit të blerjeve të mëparshme në shumën e blerjes, duke u fokusuar në ndikimin e kategorisë së produktit. Ngjyrat ndihmojnë në identifikimin e kategorive të ndryshme të produkteve.
+
+```python
+sns.scatterplot(x='Previous Purchases', y='Purchase Amount (USD)', hue='Category', data=new_df)
+plt.title('Numri i blerjeve të mëparshme vs Shuma e blerjes sipas kategorisë')
+plt.xlabel('Numri i blerjeve të mëparshme')
+plt.ylabel('Shuma e blerjes (USD)')
+plt.show()
+```
+![vizualizimi i të dhënave shumëdimensionale](images/vizuailizimi_shume_dimensional.png)
+
+#### 3. Heatmap për marrëdhënien midis vlerësimit të rishikimit dhe mosha
+Ky heatmap tregon ndërvarësinë midis grupit të moshës së klientit dhe vlerësimit të tyre të rishikimit. Çdo qeli përfaqëson frekuencën e kombinimeve specifike të moshës dhe vlerësimit të rishikimit.
+
+```python
+age_bins = pd.cut(new_df['Age'], bins=[0, 20, 40, 60, 80])
+review_rating_vs_age = pd.crosstab(age_bins, new_df['Review Rating'])
+sns.heatmap(review_rating_vs_age, annot=True, fmt="d", cmap="YlGnBu")
+plt.title('Marrëdhënia midis vlerësimit të rishikimit dhe mosha')
+plt.xlabel('Vlerësimi i rishikimit')
+plt.ylabel('Mosha')
+plt.show()
+```
+
+#### 4. Heatmap për marrëdhënien midis kategorisë dhe llojit të transportit
+Ky heatmap ilustron marrëdhënien midis kategorisë së produktit dhe llojit të transportit të zgjedhur. Tregon se cilat metoda transporti janë më të zakonshme për çdo kategori të ndryshme të produktit.
+
+```python
+category_vs_shipping = pd.crosstab(new_df['Category'], new_df['Shipping Type'])
+sns.heatmap(category_vs_shipping, annot=True, fmt="d", cmap="BuPu")
+plt.title('Marrëdhënia midis kategorisë dhe llojit të transportit')
+plt.xlabel('Lloji i transportit')
+plt.ylabel('Kategoria')
+plt.show()
+```
+
+### Vizualizimi interaktiv 
+#### Vizualizimi interaktiv i mesatares së shumës së blerjes sipas kategorisë me HoverTool
+
+Kjo pjesë përmban përshkrimin dhe kodin e përdorur për vizualizimin interaktiv të mesatares së shumës së blerjes për çdo kategori të produktit në datasetin e dhënë, duke përdorur Bokeh dhe HoverTool për interaktivitet.
+
+#### Libraritë e Përdorura
+
+```python
+from bokeh.plotting import figure, show, output_notebook
+from bokeh.models import ColumnDataSource, HoverTool
+from bokeh.transform import dodge
+import pandas as pd
+```
+
+#### Procesi i Vizualizimit
+
+1. Përgatitja e të dhënave për vizualizim.
+2. Krijimi i grafikut me Bokeh dhe shtimi i interaktivitetit përmes HoverTool.
+3. Shfaqja e grafikut në Jupyter Notebook ose mjedis tjetër të përshtatshëm.
+
+#### Kod për Vizualizimin
+
+```python
+# Përgatitja e të dhënave për vizualizim
+grouped_data = new_df.groupby('Category')['Purchase Amount (USD)'].mean().reset_index()
+source = ColumnDataSource(grouped_data)
+
+# Vendosja për shfaqjen e grafikut në notebook
+output_notebook()
+
+# Krijimi i grafikut
+p = figure(x_range=grouped_data['Category'], width=800, height=400, title="Mesatarja e shumës së blerjes sipas kategorisë",
+           x_axis_label='Kategoria', y_axis_label='Mesatarja e shumës së blerjes (USD)')
+
+# Shtimi i shtyllave në grafik
+p.vbar(x=dodge('Category', -0.25, range=p.x_range), top='Purchase Amount (USD)', width=0.2, source=source,
+       color="skyblue")
+
+# Shtimi i mjetit HoverTool për të shfaqur detajet kur mausi vendoset mbi shtyllat
+hover = HoverTool()
+hover.tooltips = [("Kategoria", "@Category"), ("Mesatarja e shumës", "@{Purchase Amount (USD)}")]
+p.add_tools(hover)
+
+# Shfaqja e grafikut
+show(p)
+```
+![vizualizimi interaktiv 1](images/Vizualizimi_interaktiv_shembull1.png)
+
+
 # Kontributi
 Blerona Idrizi
 
