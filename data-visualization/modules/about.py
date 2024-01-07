@@ -19,15 +19,17 @@ def getAboutPage():
             <li><a href="https://plotly.com/python/plotly-express/" target="_blank">Plotly Express</a></li>
         </ul>
     """, unsafe_allow_html=True)
-    st.markdown("Aplikacionet ne te cilat jami bazur jane:")
+    st.markdown("Aplikacionet në të cilat jemi bazur janë:")
     st.markdown("""
         <ul style='line-height: 1;'>
             <li><a href="https://github.com/uran-lajci/Kosovas-Frequency-Plan-Analysis-and-Vizualization" target="_blank">Kosovas-Frequency-Plan-Analysis-and-Vizualization</a></li>
+            <li><a href="https://realpython.com/python-data-visualization-bokeh/" target="_blank">Interactive Data Visualization in Python With Bokeh</a></li>
             <li><a href="https://www.kaggle.com/code/fathyfathysahlool/customer-shopping-trends" target="_blank">Customer Shopping Trends</a></li>
         </ul>
     """, unsafe_allow_html=True)
+
     st.subheader('Përshkrimi i datasetit')
-    st.markdown("Dataseti që kemi përdorur në këtë projket është Customer Shopping Trends Dataset. Ky dataset ofron njohuri të vlefshme për sjelljen e konsumatorëve dhe modelet e blerjeve. Kuptimi i preferencave dhe tendencave të klientëve është thelbësor për bizneset që të përshtatin produktet e tyre, strategjitë e marketingut dhe përvojën e përgjithshme të klientit. Ky grup të dhënash kap një gamë të gjerë të atributeve të klientit, duke përfshirë moshën, gjininë, historinë e blerjeve, mënyrat e preferuara të pagesës, shpeshtësinë e blerjeve dhe më shumë. Analizimi i këtyre të dhënave mund t'i ndihmojë bizneset të marrin vendime të informuara, të optimizojnë ofertat e produkteve dhe të rrisin kënaqësinë e klientit. Të dhënat e të dhënave qëndron si një burim i vlefshëm për bizneset që synojnë të harmonizojnë strategjitë e tyre me nevojat dhe preferencat e klientëve. Është e rëndësishme të theksohet se ky grup të dhënash është një grup i të dhënave sintetike i krijuar për fillestarët për të mësuar më shumë rreth analizës së të dhënave dhe mësimit të makinerisë.")
+    st.markdown("Dataseti që kemi përdorur në këtë projekt është Customer Shopping Trends Dataset. Ky dataset ofron njohuri të vlefshme për sjelljen e konsumatorëve dhe modelet e blerjeve. Kuptimi i preferencave dhe tendencave të klientëve është thelbësor për bizneset që të përshtatin produktet e tyre, strategjitë e marketingut dhe përvojën e përgjithshme të klientit. Ky grup të dhënash kap një gamë të gjerë të atributeve të klientit, duke përfshirë moshën, gjininë, historinë e blerjeve, mënyrat e preferuara të pagesës, shpeshtësinë e blerjeve dhe më shumë. Analizimi i këtyre të dhënave mund t'i ndihmojë bizneset të marrin vendime të informuara, të optimizojnë ofertat e produkteve dhe të rrisin kënaqësinë e klientit. Të dhënat e të dhënave qëndron si një burim i vlefshëm për bizneset që synojnë të harmonizojnë strategjitë e tyre me nevojat dhe preferencat e klientëve. Është e rëndësishme të theksohet se ky grup të dhënash është një grup i të dhënave sintetike i krijuar për fillestarët për të mësuar më shumë rreth analizës së të dhënave dhe mësimit të makinerisë.")
     st.subheader("Ky projekt është zhvilluar nga:")
     st.markdown("""
         <ul style='line-height: 1;'>

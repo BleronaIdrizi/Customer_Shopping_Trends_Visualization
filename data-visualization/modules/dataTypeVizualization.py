@@ -88,7 +88,7 @@ def dataTypeVizualizationPage(df):
                 st.write(f"Kolona e zgjedhur: {column}")
 
     with col2:
-        if 'selected_column' in st.session_state:
+        if 'selected_column' in st.session_state and st.session_state['selected_column'] is not None:
             # Based on the last clicked button, display the appropriate chart
             if viz_option == 'Columns':
                 plot_bar_chart(df, st.session_state.selected_column, f"Shpërndarja e {st.session_state.selected_column}")
