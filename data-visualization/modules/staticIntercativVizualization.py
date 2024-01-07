@@ -18,9 +18,8 @@ def interactiveDisplay(df):
     fig = px.scatter(df, x='Review Rating', y='Purchase Amount (USD)', 
                      color='Category', # Color points by category
                      hover_data=['Item Purchased', 'Age', 'Gender']) # Additional info on hover
-    st.title('Interactive Scatter Plot Example')
 
-    category = st.selectbox('Select Category:', df['Category'].unique())
+    category = st.selectbox('Zgjidh kategorinë:', df['Category'].unique())
     filtered_data = df[df['Category'] == category]
     fig = px.scatter(filtered_data, x='Review Rating', y='Purchase Amount (USD)', 
                      color='Category', hover_data=['Item Purchased', 'Age', 'Gender'])

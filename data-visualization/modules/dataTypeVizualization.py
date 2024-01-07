@@ -16,7 +16,7 @@ def plot_age_distribution(df):
     fig, ax = plt.subplots()
     age_group_counts.plot(kind='pie', autopct='%1.1f%%', startangle=90, ax=ax)
     ax.set_ylabel('')
-    ax.set_title('Shpërndarja e Grupmoshave')
+    ax.set_title('Shpërndarja e grupmoshave')
     st.pyplot(fig)
 
 def plot_pie_chart(df, column, title):

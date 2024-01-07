@@ -406,14 +406,46 @@ print("Accuracy:", accuracy_score(y_test, predictions))
 
 # FAZA 3
 Në këtë fazë përmes një qasjeve të ndryshme, kemi arritur të kryejmë vizualizimin e të dhënave sipas tipeve të tyre, duke përfshirë një spektër të gjerë të informacionit. Vizualizimi statik dhe interaktiv ka pasqyruar në mënyrë efektive detaje të rëndësishme të të dhënave, duke ofruar një perspektivë të plotë. Po ashtu, kemi eksploruar dhe implementuar teknika të sofistikuara për vizualizimin e të dhënave shumë dimensionale, duke rritur thellësinë e analizës dhe kuptimit të informacionit. Përmes tabs që i kemi shtuar ne mund të shikojmë vizualizimet sipas kërkesave.
-navigation.png
+
 ![Tabs](images/tabs.png)
 
 ## Vizualizimi sipas tipeve të dhënave
 Për të përdorur me me efikasitet vizualizimin e të dhënave në këtë projekt, ne kemi paraqitur dy lloje të filterave në anën e majtë të ekranit. Këta filtera të kerkëmit na lejojnë të zgjidhim kolonën e dëshiruar për të shfaqur më shumë informacion, duke personalizuar pamjen tuaj të të dhënave. Përveç kësaj, keni mundësinë të përcaktoni tipin e vizualizimit nëpërmjet grafikëve pie charts, horizontal, dhe vertikal. Filterat e kolonave në anën e majtë janë dinamikisht të ardhura nga kolonat e dataset-it. Për shembull, nëse zgjidhim Age si kolonë, do të mund të shikoni vizualizimin në tre lloje të ndryshme. Kjo sjellje e personalizueshme e vizualizimit ju ofron një eksperiencë të pasur dhe fleksibël për të shfrytëzuar potencialin maksimal të të dhënave tuaja.
 
-- Shfaqja e kolonës Age në 
+Shfaqja e kolonës Age sipas vizualizimit pie charts: 
 
+![Age datatype vizualization](images/viz_age_1_datatype.png)
+
+Ne mund të klikojmë edhe në diagram për të hapur vizualizimin për një pamje më të qartë:
+
+![Age datatype vizualization](images/viz_age__datatype.png)
+
+Shfaqja e kolonës Age sipas vizualizimit horizontal: 
+
+![Age datatype vizualization](images/viz_age_2_datatype.png)
+
+Shfaqja e kolonës Age sipas vizualizimit vertikal: 
+
+![Age datatype vizualization](images/viz_age_3_datatype.png)
+
+## Vizualizimi statik dhe interaktiv
+Sa i përket këtij lloj të vizualizimit kemi paraqitur vizualizimin statik dhe dinamik. Sa i përket vizualizimit statik ne i kemi kemi shfaqur vizualizim e një vlerës së kolonës kundër një kolonës tjetër. Në vizualizimin tonë statik ne duhet të zgjedhim një kolonë që dëshirojmë ta shohim vizualizimin pastar dinamikisht shfaqen vlerat e asaj kolonës që janë në datasetin tonë. Pasi të zgjedhet vlera e asaj kolone, ne mund ta zgjedhim kolonë tjetër që dëshirojmë ta shohim vizualizimin.
+
+Ne mund ta shohim një shembull se si shfaqet vizualizimi statik. 
+
+![Static Viz 1](images/static_viz_1.png)
+
+Në këtë vizualizim ne mund të shohim se mosha 19 në cilën sezonë porositë më shume sipas datasetit tonë:
+
+![Static Viz 2](images/static_viz_2.png)
+
+Nderësa sa i përket vizualizimit dinamik ne kemi për qëllim të prezantojmë një përvojë interaktive dhe informatike të analizës së të dhënave përmes vizualizimeve të krijuara. Ne duhet të zgjedhim kategorinë e dëshiruar dhe të marrin informacion të detajuar përmes grafikëve të shpërndarjes.
+
+![Static Viz 3](images/static_viz_3.png)
+
+Në një shembull tjetër ne mund të shohim mesataren e shumës së blerjeve në bazë të kategorisë:
+
+![Static Viz 4](images/static_viz_4.png)
 
 
 ## Vizualizimi i të dhënave shumë dimensionale
