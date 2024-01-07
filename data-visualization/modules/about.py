@@ -9,7 +9,7 @@ def getAboutPage():
         avancuar analitik në ueb. Duke përdorur teknika të avancuara të parapërgatitjes dhe analizës së të dhënave, ne synojmë të paraqesim disa ide se si mund ti ndihmojmë bizneset të përshtaten në nevojat e klientëve të tyre. Projektimi, ekzekutimi dhe analiza e të dhënave janë bërë me qëllim të përmirësimit të strategjive të marketingut dhe ofertave të bizneseve, duke kontribuar drejt një përvoje më të personalizuar për konsumatorin.
     """)
     st.markdown("""
-        Gjuha programuese kryesore e përdorur është Python, me një sërë librarish si Streamlit për ndërtimin e aplikacionit interaktiv, Pandas dhe Numpy për përpunimin e të dhënave, Plotly Express dhe Altair për vizualizime të të dhënave, si dhe libraritë re dhe hashlib për përpunimin e tekstit dhe sigurinë e të dhënave. Për përkthimin e përmbajtjes, është përdorur libraritë googletrans.
+        Gjuha programuese kryesore e përdorur është Python, me një sërë librarish si Streamlit për ndërtimin e aplikacionit interaktiv, Pandas dhe Numpy për përpunimin e të dhënave, Plotly Express për vizualizime të të dhënave.
     """)
     st.markdown("""
         <ul style='line-height: 1;'>
