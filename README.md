@@ -404,7 +404,21 @@ print("Accuracy:", accuracy_score(y_test, predictions))
 
 ![Acurrency](images/acurrency.png)
 
-# Faza 3
+# FAZA 3
+Në këtë fazë përmes një qasjeve të ndryshme, kemi arritur të kryejmë vizualizimin e të dhënave sipas tipeve të tyre, duke përfshirë një spektër të gjerë të informacionit. Vizualizimi statik dhe interaktiv ka pasqyruar në mënyrë efektive detaje të rëndësishme të të dhënave, duke ofruar një perspektivë të plotë. Po ashtu, kemi eksploruar dhe implementuar teknika të sofistikuara për vizualizimin e të dhënave shumë dimensionale, duke rritur thellësinë e analizës dhe kuptimit të informacionit. Përmes tabs që i kemi shtuar ne mund të shikojmë vizualizimet sipas kërkesave.
+navigation.png
+![Tabs](images/tabs.png)
+
+## Vizualizimi sipas tipeve të dhënave
+Për të përdorur me me efikasitet vizualizimin e të dhënave në këtë projekt, ne kemi paraqitur dy lloje të filterave në anën e majtë të ekranit. Këta filtera të kerkëmit na lejojnë të zgjidhim kolonën e dëshiruar për të shfaqur më shumë informacion, duke personalizuar pamjen tuaj të të dhënave. Përveç kësaj, keni mundësinë të përcaktoni tipin e vizualizimit nëpërmjet grafikëve pie charts, horizontal, dhe vertikal. Filterat e kolonave në anën e majtë janë dinamikisht të ardhura nga kolonat e dataset-it. Për shembull, nëse zgjidhim Age si kolonë, do të mund të shikoni vizualizimin në tre lloje të ndryshme. Kjo sjellje e personalizueshme e vizualizimit ju ofron një eksperiencë të pasur dhe fleksibël për të shfrytëzuar potencialin maksimal të të dhënave tuaja.
+
+- Shfaqja e kolonës Age në 
+
+
+
+
+
+
 
 # Kontributi
 Blerona Idrizi
